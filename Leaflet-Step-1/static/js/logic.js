@@ -97,15 +97,21 @@ d3.json(url).then(function(data) {
     legend.onAdd = function() {
         var div = L.DomUtil.create("div", "info-legend");
             var grades = [0, 10, 50, 100, 300, 500, 700];
+            var colors = ["#fef0d9", "#fdd49e", "#fdbb84", "#fc8d59", "#e34a33", "#b30000"]
             var labels = [];
 
-        for (var i=0; i< grades.length; i++) {
-            div.innerHTML +=
-            '<i style="background:' + chooseColor(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-        }
+            var legendInfo = "<h1>Earthquake Depth</h1>" +
+            "<div class=\"labels\">" +
+              "<div class=\"min\">" + grades[0] + "</div>" +
+              "<div class=\"max\">" + grades[grades.length - 1] + "</div>" +
+            "</div>";
+      
+        div.innerHTML = legendInfo;
         return div;
-    }    
-    
+          
+        };
     legend.addTo(myMap);
-});
+    });    
+    
+
+
