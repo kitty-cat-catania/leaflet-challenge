@@ -92,14 +92,20 @@ d3.json(url).then(function(data) {
         }
     }).addTo(myMap);
 
-    /*legend setup
+    //legend setup
     var legend = L.control({position: "bottomright" });
     legend.onAdd = function() {
         var div = L.DomUtil.create("div", "info-legend");
-        var limits = geojson.options.limits;
-        var colors = geojson.options.colors;
-        var labels = [];
+            var grades = [0, 10, 50, 100, 300, 500, 700];
+            var labels = [];
 
-
-    } */
+        for (var i=0; i< grades.length; i++) {
+            div.innerHTML +=
+            '<i style="background:' + chooseColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+        }
+        return div;
+    }    
+    
+    legend.addTo(myMap);
 });
