@@ -38,20 +38,47 @@ function makeRadius(magnitude) {
     else {
         var rad = 7; 
         return rad;
-    }
-};
+    }   
 
+
+};
+function chooseColor(depth) {
+    if (depth < 10) {
+        var color = "#fef0d9";
+        return color;
+    }
+    else if (depth >= 10 && depth < 50) {
+        var color = "#fdd49e";
+        return color;
+    }
+    else if (depth >= 50 && depth <100) {
+        var color = "#fdbb84";
+        return color;
+    }
+    else if (depth >=100 && depth < 300) {
+        var color = "#fc8d59";
+        return color;
+    }
+    else if (depth >=300 && depth < 500) {
+        var color = "#e34a33";
+        return color;
+    }
+    else {
+        var color = "#b30000";
+        return color;
+    }
+}
 d3.json(url).then(function(data) {
 
    
 
     
-    L.geoJson(data, {
+    geojson = L.geoJson(data, {
         style: function(feature) {
             return {
                 color: "white",
-                fillColor: "blue",
-                fillOpacity: 0.3,
+                fillColor: chooseColor(feature.geometry.coordinates[2]),
+                fillOpacity: 0.9,
                 weight: 1.2,
                 radius: makeRadius(feature.properties.mag)
             };
@@ -65,4 +92,14 @@ d3.json(url).then(function(data) {
         }
     }).addTo(myMap);
 
+    /*legend setup
+    var legend = L.control({position: "bottomright" });
+    legend.onAdd = function() {
+        var div = L.DomUtil.create("div", "info-legend");
+        var limits = geojson.options.limits;
+        var colors = geojson.options.colors;
+        var labels = [];
+
+
+    } */
 });
