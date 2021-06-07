@@ -15,6 +15,10 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
 
 d3.json(url).then(function(data) {
+
+   
+
+    
     L.geoJson(data, {
         style: function(feature) {
             return {
@@ -23,9 +27,10 @@ d3.json(url).then(function(data) {
                 fillOpacity: 0.3,
                 weight: 1.2
             };
+        },
+        onEachFeature: function(feature, layer) {
+            layer.bindPopup("Mag" + feature.properties.mag + "Place: " + feature.properties.place);
         }
     }).addTo(myMap);
 
-
-    console.log("meh");
 });
