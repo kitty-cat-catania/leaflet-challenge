@@ -11,3 +11,21 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   id: "mapbox/streets-v11",
   accessToken: API_KEY
 }).addTo(myMap);
+
+var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
+
+d3.json(url).then(function(data) {
+    L.geoJson(data, {
+        style: function(feature) {
+            return {
+                color: "white",
+                fillColor: "pink",
+                fillOpacity: 0.3,
+                weight: 1.2
+            };
+        }
+    }).addTo(myMap);
+
+
+    console.log("meh");
+});
