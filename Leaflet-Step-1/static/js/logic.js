@@ -96,17 +96,23 @@ d3.json(url).then(function(data) {
     var legend = L.control({position: "bottomright" });
     legend.onAdd = function() {
         var div = L.DomUtil.create("div", "info-legend");
-            var grades = [0, 10, 50, 100, 300, 500, 700];
+            var limits = [0, 10, 50, 100, 300, 500, 700];
             var colors = ["#fef0d9", "#fdd49e", "#fdbb84", "#fc8d59", "#e34a33", "#b30000"]
             var labels = [];
 
             var legendInfo = "<h1>Earthquake Depth</h1>" +
             "<div class=\"labels\">" +
-              "<div class=\"min\">" + grades[0] + "</div>" +
-              "<div class=\"max\">" + grades[grades.length - 1] + "</div>" +
+            "<div class=\"min\">" + limits[0] + "</div>" +
+            "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
+
             "</div>";
       
         div.innerHTML = legendInfo;
+        limits.forEach(function(limit, index) {
+            labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
+          });
+      
+        div.innerHTML += "<ul>" + labels.join("") + "</ul>";
         return div;
           
         };
