@@ -105,7 +105,7 @@ d3.json(url).then(function(data) {
       
         div.innerHTML = legendInfo;
         limits.forEach(function(limit, index) {
-            labels.push("<li style=\"background-color: " + colors[index] + "\">" + limits[index] + "</li>");
+            labels.push("<li style=\"background-color: " + colors[index] + "\"><strong>" + limits[index] + "</li>");
           });
       
         div.innerHTML += "<ul>" + labels.join("") + "</ul>";
