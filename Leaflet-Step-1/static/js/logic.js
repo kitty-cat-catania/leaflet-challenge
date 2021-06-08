@@ -84,7 +84,7 @@ d3.json(url).then(function(data) {
             };
         },
         onEachFeature: function(feature, layer) {
-            layer.bindPopup("Mag" + feature.properties.mag + "Place: " + feature.properties.place);
+            layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Place: " + feature.properties.place);
         },
         pointToLayer: function(geoJsonPoint, latlng) {
             return L.circleMarker(latlng);
