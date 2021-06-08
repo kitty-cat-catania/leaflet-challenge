@@ -1,1 +1,2 @@
 # leaflet-challenge
+These files use leaflet to visualize earthquake data from the USGS website (https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson). Specifically, it graphs points for all earthquakes with a magnitude of at least 4.5 that have occurred within the past 30 days. Larger points correspond to earthquakes with a larger magnitutde and points with a deeper color correspond to earthquakes with a larger depth. 
