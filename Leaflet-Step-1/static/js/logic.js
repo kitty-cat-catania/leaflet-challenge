@@ -44,27 +44,27 @@ function makeRadius(magnitude) {
 };
 function chooseColor(depth) {
     if (depth < 10) {
-        var color = "#fef0d9";
+        var color = "#edf8fb";
         return color;
     }
     else if (depth >= 10 && depth < 50) {
-        var color = "#fdd49e";
+        var color = "#bfd3e6";
         return color;
     }
     else if (depth >= 50 && depth <100) {
-        var color = "#fdbb84";
+        var color = "#9ebcda";
         return color;
     }
     else if (depth >=100 && depth < 300) {
-        var color = "#fc8d59";
+        var color = "#8c96c6";
         return color;
     }
     else if (depth >=300 && depth < 500) {
-        var color = "#e34a33";
+        var color = "#8856a7";
         return color;
     }
     else {
-        var color = "#b30000";
+        var color = "#810f7c";
         return color;
     }
 }
@@ -84,7 +84,7 @@ d3.json(url).then(function(data) {
             };
         },
         onEachFeature: function(feature, layer) {
-            layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Place: " + feature.properties.place);
+            layer.bindPopup("<strong>Magnitude: </strong>" + feature.properties.mag + "<br><strong>Place:</strong> " + feature.properties.place);
         },
         pointToLayer: function(geoJsonPoint, latlng) {
             return L.circleMarker(latlng);
@@ -97,7 +97,7 @@ d3.json(url).then(function(data) {
     legend.onAdd = function() {
         var div = L.DomUtil.create("div", "info-legend");
             var limits = [ 10, 50, 100, 300, 500, 700];
-            var colors = ["#fef0d9", "#fdd49e", "#fdbb84", "#fc8d59", "#e34a33", "#b30000"]
+            var colors = ["#edf8fb", "#bfd3e6","#9ebcda","#8c96c6","#8856a7","#810f7c"]
             var labels = [];
 
             var legendInfo = "<h1>Earthquake Depth</h1>";
