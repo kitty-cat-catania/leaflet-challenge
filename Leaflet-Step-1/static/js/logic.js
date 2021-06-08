@@ -76,7 +76,7 @@ d3.json(url).then(function(data) {
     geojson = L.geoJson(data, {
         style: function(feature) {
             return {
-                color: "white",
+                color: "black",
                 fillColor: chooseColor(feature.geometry.coordinates[2]),
                 fillOpacity: 0.9,
                 weight: 1.2,
